@@ -3,4 +3,6 @@ exports.index = function(req, res) {
 };
 
 exports.add_hike = function(req, res) {
+  console.log('added a hike!', req.body);
+  res.send(req.body);
 };
