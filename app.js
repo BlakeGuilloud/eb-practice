@@ -7,8 +7,12 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var hike = require('./routes/hike');
 
 var app = express();
+
+app.get('/hikes', hike.index);
+app.post('/add_hike', hike.add_hike);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
